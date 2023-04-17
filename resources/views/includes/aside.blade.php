@@ -59,20 +59,20 @@
 
     <ul class="menu-inner py-1">
         <!-- Dashboard -->
-        <li class="menu-item active">
-            <a href="index.html" class="menu-link">
+        <li class="menu-item {{ request()->is('/') ? 'active' : '' }}">
+            <a href="{{ route('dashboard') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
             </a>
         </li>
-        <li class="menu-item">
-            <a href="index.html" class="menu-link">
+        <li class="menu-item {{ request()->is('categories') ? 'active' : '' }}">
+            <a href="{{ route('categories.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Category</div>
             </a>
         </li>
-        <li class="menu-item">
-            <a href="index.html" class="menu-link">
+        <li class="menu-item {{ request()->is('posts') ? 'active' : '' }}">
+            <a href="#" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Post</div>
             </a>
