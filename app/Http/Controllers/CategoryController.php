@@ -26,8 +26,13 @@ class CategoryController extends Controller
             'name' => "required"
         ]);
 
-        Category::create($validated);
-        return redirect()->route('categories.index')->with(['success' => "Successfully created a category"]);
+        $result = Category::create($validated);
+        if ($result) {
+            return redirect()->route('categories.create')->with('success', "Successfully created a category");
+        } else {
+            return redirect()->route('categories.create')->with('errors', "Successfully created a category");
+        }
+
     }
 
     public function edit(Category $category)
@@ -43,7 +48,7 @@ class CategoryController extends Controller
             'name' => 'required'
         ]);
         $category->update($validated);
-        return redirect()->route('categories.index')->with(['success' => "Successfully updated a category"]);
+        return redirect()->route('categories.edit', ['category' => $category->id])->with(['success' => "Successfully updated a category"]);
     }
 
     public function destroy(Category $category)

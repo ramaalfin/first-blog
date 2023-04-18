@@ -3,6 +3,11 @@
     Add Category Page
 @endsection
 @section('content')
+    {{-- TOAST --}}
+    @if (session('success'))
+        @include('includes.toast')
+    @endif
+    {{-- TOAST --}}
     <!-- Content wrapper -->
     <div class="content-wrapper">
         <!-- Content -->

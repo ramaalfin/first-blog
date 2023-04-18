@@ -3,6 +3,11 @@
     Edit Category Page
 @endsection
 @section('content')
+    {{-- TOAST --}}
+    @if (session('success'))
+        @include('includes.toast')
+    @endif
+    {{-- TOAST --}}
     <!-- Content wrapper -->
     <div class="content-wrapper">
         <!-- Content -->
@@ -21,7 +26,8 @@
                                     </ol>
                                 </nav>
                                 <h5 class="card-title text-primary ms-2">Edit Post Categories</h5>
-                                <form action="{{ route('categories.update', ['category' => $category->id]) }}" method="POST">
+                                <form action="{{ route('categories.update', ['category' => $category->id]) }}"
+                                    method="POST">
                                     @method('PATCH')
                                     @include('pages.categories.form', ['tombol' => 'Edit'])
                                 </form>
