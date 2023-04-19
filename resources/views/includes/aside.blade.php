@@ -72,7 +72,7 @@
             </a>
         </li>
         <li class="menu-item {{ request()->is('posts') ? 'active' : '' }}">
-            <a href="#" class="menu-link">
+            <a href="{{ route('posts.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Post</div>
             </a>

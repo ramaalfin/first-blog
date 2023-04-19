@@ -10,8 +10,8 @@ class CategoryController extends Controller
     public function index()
     {
         return view('pages.categories.index', [
-            'categories' => Category::all(),
-            'category' => Category::pluck('id')->toArray()
+            'categories' => Category::withCount('posts')->get(),
+            'category' => Category::pluck('id')->toArray(),
         ]);
     }
 

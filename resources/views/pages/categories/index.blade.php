@@ -5,7 +5,6 @@
 @section('content')
     <!-- Content wrapper -->
     <div class="content-wrapper">
-
         <!-- Content -->
         <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row">
@@ -36,7 +35,7 @@
                                                             {{ $category->name }}
                                                         </a>
                                                     </td>
-                                                    <td>10</td>
+                                                    <td>{{ $category->posts_count }}</td>
                                                     @auth
                                                         <td class="d-flex gap-2 ">
                                                             <a href="{{ route('categories.edit', $category->id) }}"

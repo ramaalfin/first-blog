@@ -1,13 +1,8 @@
 @extends('layouts.dashboard')
 @section('title')
-    Add Category Page
+    Add Post
 @endsection
 @section('content')
-    {{-- TOAST --}}
-    @if (session('success'))
-        @include('includes.toast')
-    @endif
-    {{-- TOAST --}}
     <!-- Content wrapper -->
     <div class="content-wrapper">
         <!-- Content -->
@@ -20,14 +15,14 @@
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb ms-2 mb-4">
                                         <li class="breadcrumb-item">
-                                            <a href="{{ route('categories.index') }}">Category</a>
+                                            <a href="{{ route('posts.index') }}">Post</a>
                                         </li>
                                         <li class="breadcrumb-item active">Add</li>
                                     </ol>
                                 </nav>
-                                <h5 class="card-title text-primary ms-2">Add Post Categories</h5>
-                                <form action="{{ route('categories.store') }}" method="POST">
-                                    @include('pages.categories.form', ['tombol' => 'Add'])
+                                <h5 class="card-title text-primary ms-2">Add Post posts</h5>
+                                <form action="{{ route('posts.store') }}" method="POST">
+                                    @include('pages.posts.form', ['tombol' => 'Add'])
                                 </form>
                             </div>
                         </div>
@@ -42,9 +37,5 @@
 
         <div class="content-backdrop fade"></div>
     </div>
-    <!-- Content wrapper -->
-
-    <!-- Overlay -->
-    <div class="layout-overlay layout-menu-toggle"></div>
     <!-- Content wrapper -->
 @endsection
