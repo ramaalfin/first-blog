@@ -17,7 +17,7 @@ class WelcomeMiddleware
     {
         if (!$request->session()->has('welcome')) {
             $request->session()->put('welcome', true);
-            session()->flash('success', 'Selamat datang, ' . auth()->user()->name . '!');
+            session()->flash('success-login', 'Selamat datang, ' . auth()->user()->name . '!');
         }
         return $next($request);
     }

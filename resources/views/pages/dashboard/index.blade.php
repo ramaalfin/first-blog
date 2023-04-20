@@ -7,8 +7,8 @@
     <div class="content-wrapper">
         <!-- Content -->
         {{-- NOTIF --}}
-        @if (session('success'))
-            <div class="bs-toast toast toast-placement-ex m-2 fade show bg-{{ session('success') ? 'success' : 'danger' }} bottom-0 end-0"
+        @if (session('success-login'))
+            <div class="bs-toast toast toast-placement-ex m-2 fade show bg-{{ session('success-login') ? 'success' : 'danger' }} bottom-0 end-0"
                 id="toastModal" role="alert" aria-live="assertive" aria-atomic="true">
                 <div class="toast-header">
                     <i class="bx bx-bell me-2"></i>
@@ -16,7 +16,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                 </div>
                 <div class="toast-body">
-                    <p>{{ session('success') ? session('success') : session('error') }}</p>
+                    <p>{{ session('success-login') ? session('success-login') : session('error') }}</p>
                 </div>
             </div>
 

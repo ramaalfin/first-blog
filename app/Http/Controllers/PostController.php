@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -91,9 +92,9 @@ class PostController extends Controller
             'user_id' => Auth::user()->id
         ]);
         if ($result) {
-            return redirect()->route('posts.create')->with('success', 'Successfully updated a post');
+            return redirect()->route('posts.edit', ['post' => $post->id])->with('success', 'Successfully updated a post');
         } else {
-            return redirect()->route('posts.create')->with('error', 'Failed updated a post');
+            return redirect()->route('posts.edit', ['post' => $post->id])->with('error', 'Failed updated a post');
         }
     }
 
@@ -104,5 +105,17 @@ class PostController extends Controller
     {
         $post->delete();
         return redirect()->route('posts.index')->with('success', 'Successfully deleted a post');
+    }
+
+    public function uploadImage(Request $request)
+    {
+        $post = new Post();
+        $post->id = 0;
+        $post->exists = true;
+        $images = $post->addMediaFromRequest('upload')->toMediaCollection('images');
+
+        return response()->json([
+            'url' => $images->getUrl()
+        ]);
     }
 }

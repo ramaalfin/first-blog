@@ -20,4 +20,5 @@ Route::middleware(['auth'])->group(function(){
 
     Route::resource('categories', CategoryController::class);
     Route::resource('posts', PostController::class);
+    Route::post('upload', [PostController::class, 'uploadImage'])->name('ckeditor.upload');
 });
