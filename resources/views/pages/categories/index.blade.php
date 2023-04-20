@@ -3,6 +3,11 @@
     Category Page
 @endsection
 @section('content')
+    {{-- TOAST --}}
+    @if (session('success'))
+        @include('includes.toast')
+    @endif
+    {{-- TOAST --}}
     <!-- Content wrapper -->
     <div class="content-wrapper">
         <!-- Content -->
@@ -81,30 +86,30 @@
 
         <!-- modal delete -->
         @if ($category && $category->id)
-        <div class="modal fade" id="modalCenter" tabindex="-1" style="display: none;" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h6 class="modal-title" id="modalCenterTitle">Delete Post Category</h6>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <h4 class="d-flex justify-content-center">Are you sure?</h4>
-                    </div>
-                    <div class="modal-footer">
-                        <form action="{{ route('categories.destroy', ['category' => $category->id]) }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                                Close
-                            </button>
-                            <input type="hidden" name="id" id="category-id">
-                            <button type="submit" class="btn btn-primary" name="delete_category">Save changes</button>
-                        </form>
+            <div class="modal fade" id="modalCenter" tabindex="-1" style="display: none;" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h6 class="modal-title" id="modalCenterTitle">Delete Post Category</h6>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <h4 class="d-flex justify-content-center">Are you sure?</h4>
+                        </div>
+                        <div class="modal-footer">
+                            <form action="{{ route('categories.destroy', ['category' => $category->id]) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                    Close
+                                </button>
+                                <input type="hidden" name="id" id="category-id">
+                                <button type="submit" class="btn btn-primary" name="delete_category">Save changes</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         @endif
 
 

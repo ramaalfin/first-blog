@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,7 +28,6 @@ class PostController extends Controller
     {
         return view('pages.posts.create', [
             'categories' => Category::all(),
-            'user' => Auth::user()->id
         ]);
     }
 
@@ -36,13 +36,28 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'category_id' => 'required|exists:categories,id',
+        ]);
+        $result = Post::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'category_id' => $request->category_id,
+            'user_id' => Auth::user()->id
+        ]);
+        if ($result) {
+            return redirect()->route('posts.create')->with('success', 'Successfully created a post');
+        } else {
+            return redirect()->route('posts.create')->with('error', 'Failed created a post');
+        }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Post $post)
     {
         //
     }
@@ -50,24 +65,44 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Post $post)
     {
-        //
+        return view('pages.posts.edit', [
+            'post' => $post,
+            'categories' => $post->category->get()
+        ]);
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'category_id' => 'required|exists:categories,id',
+        ]);
+        $result = $post->update([
+            'title' => $request->title,
+            'description' => $request->description,
+            'category_id' => $request->category_id,
+            'user_id' => Auth::user()->id
+        ]);
+        if ($result) {
+            return redirect()->route('posts.create')->with('success', 'Successfully updated a post');
+        } else {
+            return redirect()->route('posts.create')->with('error', 'Failed updated a post');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('posts.index')->with('success', 'Successfully deleted a post');
     }
 }

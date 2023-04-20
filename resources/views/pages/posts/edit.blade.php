@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 @section('title')
-    Add Post
+    Edit Post
 @endsection
 @section('content')
     {{-- TOAST --}}
@@ -22,12 +22,13 @@
                                         <li class="breadcrumb-item">
                                             <a href="{{ route('posts.index') }}">Post</a>
                                         </li>
-                                        <li class="breadcrumb-item active">Add</li>
+                                        <li class="breadcrumb-item active">Edit</li>
                                     </ol>
                                 </nav>
-                                <h5 class="card-title text-primary ms-2">Add Post</h5>
-                                <form action="{{ route('posts.store') }}" method="POST">
-                                    @include('pages.posts.form', ['tombol' => 'Add'])
+                                <h5 class="card-title text-primary ms-2">Edit Post</h5>
+                                <form action="{{ route('posts.update', ['post' => $post->id]) }}" method="POST">
+                                    @method('PUT')
+                                    @include('pages.posts.form', ['tombol' => 'Edit'])
                                 </form>
                             </div>
                         </div>

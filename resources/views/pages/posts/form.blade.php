@@ -3,9 +3,19 @@
     <div class="row">
         <div class="col mb-3">
             <label for="category" class="form-label">category</label>
-            <select name="category_id" id="category_id" class="form-select">
+            <select name="category_id" id="category_id" class="form-select @error('category_id')
+                is-invalid
+            @enderror">
                 @foreach ($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @if ($category->id == (old('category_id') ?? $post->category_id ?? ''))
+                        <option value="{{ $category->id }}" selected>
+                            {{ $category->name }}
+                        </option>
+                    @else
+                        <option value="{{ $category->id }}">
+                            {{ $category->name }}
+                        </option>
+                    @endif
                 @endforeach
             </select>
             @error('category_id')
@@ -15,17 +25,7 @@
             @enderror
         </div>
     </div>
-    <div class="row">
-        <div class="col mb-3">
-            <label for="user" class="form-label">user</label>
-            <input type="hidden" name="user_id" value="{{ $user->name }}">
-            @error('category_id')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-        </div>
-    </div>
+
     <div class="row">
         <div class="col mb-3">
             <label for="title" class="form-label">title</label>
@@ -37,6 +37,19 @@
             @enderror
         </div>
     </div>
+
+    <div class="row">
+        <div class="col mb-3">
+            <label for="description" class="form-label">description</label>
+            <textarea id="description" class="form-control @error('description') is-invalid @enderror" name="description" placeholder="description" rows="3" required>{{ old('description') ?? $post->description ?? "" }}</textarea>
+            @error('description')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+    </div>
+
 
     <button type="submit" class="btn btn-primary" id="btnSubmit" name="addBtnSubmit">{{ $tombol }}</button>
 </div>

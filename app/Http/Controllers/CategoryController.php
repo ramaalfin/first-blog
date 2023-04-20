@@ -30,7 +30,7 @@ class CategoryController extends Controller
         if ($result) {
             return redirect()->route('categories.create')->with('success', "Successfully created a category");
         } else {
-            return redirect()->route('categories.create')->with('errors', "Successfully created a category");
+            return redirect()->route('categories.create')->with('errors', "Failed created a category");
         }
 
     }
@@ -47,8 +47,13 @@ class CategoryController extends Controller
         $validated = $request->validate([
             'name' => 'required'
         ]);
-        $category->update($validated);
-        return redirect()->route('categories.edit', ['category' => $category->id])->with(['success' => "Successfully updated a category"]);
+        $result = $category->update($validated);
+        if ($result) {
+            return redirect()->route('categories.edit', ['category' => $category->id])->with('success', "Successfully updated a category");
+        } else {
+            return redirect()->route('categories.edit', ['category' => $category->id])->with('success', "Failed updated a category");
+        }
+
     }
 
     public function destroy(Category $category)
