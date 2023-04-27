@@ -1,11 +1,11 @@
-@extends('layouts.dashboard')
+@extends('backend.layouts.dashboard')
 @section('title')
-    Edit Post
+    Add Post
 @endsection
 @section('content')
     {{-- TOAST --}}
     @if (session('success'))
-        @include('includes.toast')
+        @include('backend.includes.toast')
     @endif
     {{-- TOAST --}}
     <!-- Content wrapper -->
@@ -22,13 +22,12 @@
                                         <li class="breadcrumb-item">
                                             <a href="{{ route('posts.index') }}">Post</a>
                                         </li>
-                                        <li class="breadcrumb-item active">Edit</li>
+                                        <li class="breadcrumb-item active">Add</li>
                                     </ol>
                                 </nav>
-                                <h5 class="card-title text-primary ms-2">Edit Post</h5>
-                                <form action="{{ route('posts.update', ['post' => $post->id]) }}" method="POST">
-                                    @method('PUT')
-                                    @include('pages.posts.form', ['tombol' => 'Edit'])
+                                <h5 class="card-title text-primary ms-2">Add Post</h5>
+                                <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
+                                    @include('pages.posts.form', ['tombol' => 'Add'])
                                 </form>
                             </div>
                         </div>
@@ -38,10 +37,11 @@
         </div>
         <!-- / Content -->
         <!-- Footer -->
-        @include('includes.footer')
+        @include('backend.includes.footer')
         <!-- / Footer -->
 
         <div class="content-backdrop fade"></div>
     </div>
     <!-- Content wrapper -->
 @endsection
+

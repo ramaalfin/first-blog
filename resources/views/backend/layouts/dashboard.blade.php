@@ -16,7 +16,7 @@
 
     {{-- Style --}}
     @stack('prepend-style')
-    @include('includes.style')
+    @include('backend.includes.style')
     @stack('addon-style')
 
     <!-- Page CSS -->
@@ -27,6 +27,8 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ url('../assets/js/config.js') }}"></script>
+
+
 </head>
 <body>
     {{-- navbar --}}
@@ -34,27 +36,22 @@
         <div class="layout-container">
 
             <!-- Menu Aside-->
-            @include('includes.aside')
+            @include('backend.includes.aside')
             <!-- / Menu -->
 
             <!-- Layout container -->
             <div class="layout-page">
                 <!-- Nav -->
-                @include('includes.nav')
+                @include('backend.includes.nav')
                 <!-- / Nav -->
                 @yield('content')
             </div>
         </div>
     </div>
 
-    {{-- footer --}}
-    @include('includes.footer')
-
     {{-- Script --}}
     @stack('prepend-script')
-    @include('includes.script')
+    @include('backend.includes.script')
     @stack('addon-script')
 </body>
 </html>
-
-

@@ -1,11 +1,11 @@
 @extends('layouts.dashboard')
 @section('title')
-    Edit Category Page
+    Add Category Page
 @endsection
 @section('content')
     {{-- TOAST --}}
     @if (session('success'))
-        @include('includes.toast')
+        @include('backend.includes.toast')
     @endif
     {{-- TOAST --}}
     <!-- Content wrapper -->
@@ -22,14 +22,12 @@
                                         <li class="breadcrumb-item">
                                             <a href="{{ route('categories.index') }}">Category</a>
                                         </li>
-                                        <li class="breadcrumb-item active">Edit</li>
+                                        <li class="breadcrumb-item active">Add</li>
                                     </ol>
                                 </nav>
-                                <h5 class="card-title text-primary ms-2">Edit Post Categories</h5>
-                                <form action="{{ route('categories.update', ['category' => $category->id]) }}"
-                                    method="POST">
-                                    @method('PATCH')
-                                    @include('pages.categories.form', ['tombol' => 'Edit'])
+                                <h5 class="card-title text-primary ms-2">Add Post Categories</h5>
+                                <form action="{{ route('categories.store') }}" method="POST">
+                                    @include('pages.categories.form', ['tombol' => 'Add'])
                                 </form>
                             </div>
                         </div>
@@ -39,21 +37,14 @@
         </div>
         <!-- / Content -->
         <!-- Footer -->
-        @include('includes.footer')
+        @include('backend.includes.footer')
         <!-- / Footer -->
 
         <div class="content-backdrop fade"></div>
     </div>
     <!-- Content wrapper -->
-    </div>
-    <!-- / Layout page -->
-    </div>
 
     <!-- Overlay -->
     <div class="layout-overlay layout-menu-toggle"></div>
-    </div>
     <!-- Content wrapper -->
-
-    </div>
-    <!-- / Layout page -->
 @endsection

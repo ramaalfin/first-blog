@@ -5,7 +5,7 @@
 @section('content')
     {{-- TOAST --}}
     @if (session('success'))
-        @include('includes.toast')
+        @include('backend.includes.toast')
     @endif
     {{-- TOAST --}}
     <!-- Content wrapper -->
@@ -69,7 +69,7 @@
                         <!-- / Content -->
 
                         <!-- Footer -->
-                        @include('includes.footer')
+                        @include('backend.includes.footer')
                         <!-- / Footer -->
 
                         <div class="content-backdrop fade"></div>

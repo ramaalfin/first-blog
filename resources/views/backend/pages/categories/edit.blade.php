@@ -1,11 +1,11 @@
 @extends('layouts.dashboard')
 @section('title')
-    Add Post
+    Edit Category Page
 @endsection
 @section('content')
     {{-- TOAST --}}
     @if (session('success'))
-        @include('includes.toast')
+        @include('backend.includes.toast')
     @endif
     {{-- TOAST --}}
     <!-- Content wrapper -->
@@ -20,14 +20,16 @@
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb ms-2 mb-4">
                                         <li class="breadcrumb-item">
-                                            <a href="{{ route('posts.index') }}">Post</a>
+                                            <a href="{{ route('categories.index') }}">Category</a>
                                         </li>
-                                        <li class="breadcrumb-item active">Add</li>
+                                        <li class="breadcrumb-item active">Edit</li>
                                     </ol>
                                 </nav>
-                                <h5 class="card-title text-primary ms-2">Add Post</h5>
-                                <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
-                                    @include('pages.posts.form', ['tombol' => 'Add'])
+                                <h5 class="card-title text-primary ms-2">Edit Post Categories</h5>
+                                <form action="{{ route('categories.update', ['category' => $category->id]) }}"
+                                    method="POST">
+                                    @method('PATCH')
+                                    @include('pages.categories.form', ['tombol' => 'Edit'])
                                 </form>
                             </div>
                         </div>
@@ -37,11 +39,21 @@
         </div>
         <!-- / Content -->
         <!-- Footer -->
-        @include('includes.footer')
+        @include('backend.includes.footer')
         <!-- / Footer -->
 
         <div class="content-backdrop fade"></div>
     </div>
     <!-- Content wrapper -->
-@endsection
+    </div>
+    <!-- / Layout page -->
+    </div>
 
+    <!-- Overlay -->
+    <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+    <!-- Content wrapper -->
+
+    </div>
+    <!-- / Layout page -->
+@endsection

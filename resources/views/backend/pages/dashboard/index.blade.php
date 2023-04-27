@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('backend.layouts.dashboard')
 @section('title')
     Home Page
 @endsection
@@ -35,6 +35,7 @@
                         <div class="d-flex align-items-end row">
                             <div class="col-sm-7">
                                 <div class="card-body">
+
                                     <h5 class="card-title text-primary">Congratulations John! 🎉</h5>
                                     <p class="mb-4">
                                         You have done <span class="fw-bold">72%</span> more sales today.
@@ -58,13 +59,11 @@
                 </div>
             </div>
             <!-- / Content -->
-
-            <!-- Footer -->
-            @include('includes.footer')
-            <!-- / Footer -->
-
             <div class="content-backdrop fade"></div>
         </div>
+        <!-- Footer -->
+        @include('backend.includes.footer')
+        <!-- / Footer -->
         <!-- Content wrapper -->
 
     </div>
