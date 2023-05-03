@@ -1,6 +1,6 @@
 @extends('backend.layouts.dashboard')
 @section('title')
-    Home Page
+    Admin - Home
 @endsection
 @section('content')
     <!-- Content wrapper -->

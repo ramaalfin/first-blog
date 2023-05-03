@@ -9,7 +9,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        return view('pages.categories.index', [
+        return view('backend.pages.categories.index', [
             'categories' => Category::withCount('posts')->get(),
             'category' => Category::pluck('id')->toArray(),
         ]);
@@ -17,7 +17,7 @@ class CategoryController extends Controller
 
     public function create()
     {
-        return view('pages.categories.create');
+        return view('backend.pages.categories.create');
     }
 
     public function store(Request $request)
@@ -37,7 +37,7 @@ class CategoryController extends Controller
 
     public function edit(Category $category)
     {
-        return view('pages.categories.edit', [
+        return view('backend.pages.categories.edit', [
             'category' => $category
         ]);
     }

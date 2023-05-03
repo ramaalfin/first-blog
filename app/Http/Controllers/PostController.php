@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
@@ -16,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('pages.posts.index', [
+        return view('backend.pages.posts.index', [
             'posts' => Post::all(),
             'post' => Post::pluck('id')->toArray()
         ]);
@@ -27,7 +26,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('pages.posts.create', [
+        return view('backend.pages.posts.create', [
             'categories' => Category::all(),
         ]);
     }
@@ -68,7 +67,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('pages.posts.edit', [
+        return view('backend.pages.posts.edit', [
             'post' => $post,
             'categories' => $post->category->get()
         ]);

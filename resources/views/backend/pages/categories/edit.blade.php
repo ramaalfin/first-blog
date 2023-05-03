@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 @section('title')
-    Edit Category Page
+    Admin - Edit Category
 @endsection
 @section('content')
     {{-- TOAST --}}
