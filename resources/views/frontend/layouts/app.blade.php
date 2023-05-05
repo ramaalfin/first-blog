@@ -28,7 +28,9 @@
 
 </head>
 <body>
+    @include('frontend.includes.nav')
     @yield('content')
+    @include('frontend.includes.footer')
 
     {{-- Script --}}
     @stack('prepend-script')

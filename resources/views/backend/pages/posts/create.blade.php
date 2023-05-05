@@ -27,7 +27,7 @@
                                 </nav>
                                 <h5 class="card-title text-primary ms-2">Add Post</h5>
                                 <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
-                                    @include('pages.posts.form', ['tombol' => 'Add'])
+                                    @include('backend.pages.posts.form', ['tombol' => 'Add'])
                                 </form>
                             </div>
                         </div>

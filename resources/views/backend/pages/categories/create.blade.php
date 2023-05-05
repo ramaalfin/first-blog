@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('backend.layouts.dashboard')
 @section('title')
     Admin - Add Category
 @endsection
@@ -27,7 +27,7 @@
                                 </nav>
                                 <h5 class="card-title text-primary ms-2">Add Post Categories</h5>
                                 <form action="{{ route('categories.store') }}" method="POST">
-                                    @include('pages.categories.form', ['tombol' => 'Add'])
+                                    @include('backend.pages.categories.form', ['tombol' => 'Add'])
                                 </form>
                             </div>
                         </div>
