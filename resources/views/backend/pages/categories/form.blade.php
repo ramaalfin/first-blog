@@ -12,5 +12,5 @@
         </div>
     </div>
 
-    <button type="submit" class="btn btn-primary" id="btnSubmit" name="addBtnSubmit">{{ $tombol }}</button>
+    <button type="submit" class="btn btn-primary" id="btnSubmit">{{ $tombol }}</button>
 </div>

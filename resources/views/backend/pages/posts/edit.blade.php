@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('backend.layouts.dashboard')
 @section('title')
     Admin - Edit Post
 @endsection
@@ -28,7 +28,7 @@
                                 <h5 class="card-title text-primary ms-2">Edit Post</h5>
                                 <form action="{{ route('posts.update', ['post' => $post->id]) }}" method="POST">
                                     @method('PUT')
-                                    @include('pages.posts.form', ['tombol' => 'Edit'])
+                                    @include('backend.pages.posts.form', ['tombol' => 'Edit'])
                                 </form>
                             </div>
                         </div>

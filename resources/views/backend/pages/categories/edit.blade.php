@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('backend.layouts.dashboard')
 @section('title')
     Admin - Edit Category
 @endsection
@@ -29,7 +29,7 @@
                                 <form action="{{ route('categories.update', ['category' => $category->id]) }}"
                                     method="POST">
                                     @method('PATCH')
-                                    @include('pages.categories.form', ['tombol' => 'Edit'])
+                                    @include('backend.pages.categories.form', ['tombol' => 'Edit'])
                                 </form>
                             </div>
                         </div>

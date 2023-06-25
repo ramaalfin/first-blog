@@ -8,6 +8,9 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>@yield('title')</title>
 
     <meta name="description" content="" />
@@ -16,9 +19,10 @@
 
     {{-- Style --}}
     @stack('prepend-style')
-    @vite(['resources/css/app.css','resources/js/app.js'])
-
+        @vite(['resources/css/app.css','resources/js/app.js'])
+        @include('frontend.includes.style')
     @stack('addon-style')
+
 
     <!-- Page CSS -->
 
@@ -28,13 +32,14 @@
 
 </head>
 <body>
+    @include('frontend.includes.header')
     @include('frontend.includes.nav')
     @yield('content')
     @include('frontend.includes.footer')
 
     {{-- Script --}}
     @stack('prepend-script')
-    {{-- @include('backend.includes.script') --}}
+        @include('frontend.includes.script')
     @stack('addon-script')
 </body>
 </html>

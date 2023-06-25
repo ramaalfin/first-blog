@@ -77,6 +77,12 @@
                 <div data-i18n="Analytics">Post</div>
             </a>
         </li>
+        <li class="menu-item {{ request()->is('/') ? 'active' : '' }}">
+            <a href="{{ route('index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Home</div>
+            </a>
+        </li>
     </ul>
 </aside>
 <!-- / Menu -->
