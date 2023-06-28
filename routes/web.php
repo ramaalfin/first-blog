@@ -13,6 +13,7 @@ Auth::routes();
 
 Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('single-post/{post}', [FrontendController::class, 'singlePost'])->name('single-post');
+Route::get('category/{category}', [FrontendController::class, 'category'])->name('category');
 Route::get('about', [FrontendController::class, 'about'])->name('about');
 Route::get('contact', [FrontendController::class, 'contact'])->name('contact');
 Route::get('password/change', [ChangePasswordController::class, 'showChangeForm'])->name('password.change');
