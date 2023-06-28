@@ -1,5 +1,10 @@
 @extends('frontend.layouts.app')
 @section('content')
+<style>
+    figure.image{
+        min-width: 0px !important;
+    }
+</style>
     <main id="main">
 
         <section class="single-post-content">
@@ -12,7 +17,11 @@
                             <div class="post-meta"><span class="date">{{ $post->category->name }}</span> <span class="mx-1">&bullet;</span>
                                 <span>{{ $post->created_at->isoFormat('D MMMM Y') }}</span></div>
                             <h1 class="mb-5">{{ $post->title }}</h1>
-                            <p><span class="firstcharacter">L</span>{{$post->description}}</p>
+                            <div class="row">
+                                <div class="col">
+                                    {!! $post->description !!}
+                                </div>
+                            </div>
                         </div><!-- End Single Post Content -->
 
                         <!-- ======= Comments ======= -->
