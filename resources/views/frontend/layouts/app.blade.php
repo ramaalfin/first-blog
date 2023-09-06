@@ -27,8 +27,8 @@
     <!-- Page CSS -->
 
     <!-- Helpers -->
-    <script src="{{ url('../assets/vendor/js/helpers.js') }}"></script>
-    <script src="{{ url('../assets/js/config.js') }}"></script>
+    <script src="{{ asset('backend/assets/vendor/js/helpers.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/config.js') }}"></script>
 
 </head>
 <body>

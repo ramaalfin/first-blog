@@ -43,7 +43,7 @@
     <div class="row">
         <div class="col mb-3">
             <label for="description" class="form-label">description</label>
-            <textarea id="description" class="@error('description') is-invalid @enderror" name="description"
+            <textarea id="description" class="form-control @error('description') is-invalid @enderror" name="description" placeholder="description"
                 rows="5">{{ old('description') ?? ($post->description ?? '') }}</textarea>
             @error('description')
                 <span class="invalid-feedback" role="alert">
